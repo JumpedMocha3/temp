@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عسل طبيعي | متجر العسل الأصلي</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Fixed Header -->
+    <!-- Fixed Header - Same as index.html -->
     <div id="fixed-header">
-        <!-- Header content same as before -->
+        <!-- Header content same as index.html -->
     </div>
 
     <!-- Main Content - Honey Category Page -->
@@ -27,9 +27,9 @@
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer - Same as index.html -->
     <footer>
-        <!-- Footer content same as before -->
+        <!-- Footer content same as index.html -->
     </footer>
 
     <!-- JavaScript -->
@@ -42,7 +42,14 @@
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('category-products');
             if (container) {
-                const honeyProducts = products.filter(product => product.category === 'honey');
+                const urlParams = new URLSearchParams(window.location.search);
+                const type = urlParams.get('type');
+                
+                let honeyProducts = products.filter(product => product.category === 'honey');
+                
+                if (type) {
+                    honeyProducts = honeyProducts.filter(product => product.type === type);
+                }
                 
                 let html = '';
                 honeyProducts.forEach(product => {
