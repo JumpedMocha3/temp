@@ -31,22 +31,4 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.remove('no-scroll');
         }
     });
-    
-    // Load cart from localStorage if available
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    updateCartCount();
-    
-    function updateCartCount() {
-        const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-        const cartCountElements = document.querySelectorAll('.cart-count');
-        
-        cartCountElements.forEach(element => {
-            element.textContent = totalItems;
-            if (totalItems > 0) {
-                element.classList.add('active');
-            } else {
-                element.classList.remove('active');
-            }
-        });
-    }
 });
