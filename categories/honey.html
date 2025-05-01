@@ -3,56 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عسل طبيعي | متجر العسل الأصلي</title>
+    <title>متجر العسل الطبيعي | عسل أصلي 100%</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Fixed Header -->
     <div id="fixed-header">
-        <!-- Top Header -->
-        <div class="dev3-main border-bottom header-top">
-            <div class="container">
-                <nav class="dev3-menu">
-                    <!-- Logo -->
-                    <div class="dev3-item dev3-logo">
-                        <a class="logo" href="../index.html" title="متجر العسل الطبيعي">
-                            <h1>متجر العسل الطبيعي</h1>
-                        </a>
+        <div class="container header-container">
+            <!-- Top Header -->
+            <div class="header-top">
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+                <a class="logo" href="index.html">
+                    متجر العسل الطبيعي
+                </a>
+                
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="البحث عن منتج">
+                    <button class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <a href="#" class="cart-icon" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            
+            <!-- Bottom Header - Categories -->
+            <div class="header-bottom">
+                <nav class="main-nav">
+                    <div class="nav-item">
+                        <a href="index.html">الصفحة الرئيسية</a>
                     </div>
                     
-                    <!-- Search Bar -->
-                    <div class="dev3-item dev3-searchbar mx-2">
-                        <div class="form">
-                            <input type="text" class="input-search" placeholder="البحث عن منتج">
-                            <button type="submit" class="btn-form">
-                                <i class="fas fa-search"></i>
-                            </button>
+                    <div class="nav-item has-dropdown">
+                        <a href="categories/honey.html">العسل</a>
+                        <div class="dropdown-menu">
+                            <a href="categories/honey.html?type=sidr" class="dropdown-item">عسل سدر</a>
+                            <a href="categories/honey.html?type=talh" class="dropdown-item">عسل طلح</a>
+                            <a href="categories/honey.html?type=samar" class="dropdown-item">عسل سمر</a>
                         </div>
                     </div>
                     
-                    <!-- Cart Icon -->
-                    <div class="dev3-item">
-                        <a href="#" id="cart-icon" class="cart-icon">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="cart-count">0</span>
-                        </a>
+                    <div class="nav-item">
+                        <a href="categories/offers.html">عروض مميزة</a>
                     </div>
-                </nav>
-            </div>
-        </div>
-        
-        <!-- Bottom Header - Categories -->
-        <div class="dev3-main border-bottom header-bottom">
-            <div class="container">
-                <nav class="dev3-menu main-menue">
-                    <ul class="dev3-item">
-                        <!-- Your category links here -->
-                        <li><a href="../categories/honey.html">العسل</a></li>
-                        <li><a href="../categories/offers.html">عروض مميزة</a></li>
-                        <li><a href="../categories/mixtures.html">خلطات العسل</a></li>
-                        <li><a href="../categories/bee-products.html">منتجات النحل</a></li>
-                    </ul>
+                    
+                    <div class="nav-item">
+                        <a href="categories/mixtures.html">خلطات العسل</a>
+                    </div>
+                    
+                    <div class="nav-item">
+                        <a href="categories/bee-products.html">منتجات النحل</a>
+                    </div>
                 </nav>
             </div>
         </div>
