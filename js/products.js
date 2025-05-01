@@ -6,6 +6,7 @@ const products = [
         title: "عسل سدر أصلي",
         price: 120,
         category: "honey",
+        type: "sidr",
         image: "images/sidr-honey.jpg",
         description: "عسل سدر طبيعي 100% من جبال السروات، يتميز بلونه الداكن وطعمه اللذيذ وفوائده الصحية العديدة."
     },
@@ -15,6 +16,7 @@ const products = [
         title: "عسل طلح بلدي",
         price: 100,
         category: "honey",
+        type: "talh",
         image: "images/talh-honey.jpg",
         description: "عسل طلح طبيعي من أشجار الطلح، لونه ذهبي فاتح وطعمه مميز."
     },
@@ -24,6 +26,7 @@ const products = [
         title: "عسل سمر جبلي",
         price: 150,
         category: "honey",
+        type: "samar",
         image: "images/samar-honey.jpg",
         description: "عسل سمر جبلي من أعالي الجبال، يتميز بلونه الكهرماني ورائحته العطرية."
     },
@@ -33,6 +36,7 @@ const products = [
         title: "عسل زهور متنوع",
         price: 80,
         category: "honey",
+        type: "flower",
         image: "images/flower-honey.jpg",
         description: "عسل زهور متنوع من رحيق أزهار مختلفة، لونه فاتح وطعمه لطيف."
     },
@@ -41,7 +45,7 @@ const products = [
         productId: "#w101",
         title: "شمع عسل طبيعي",
         price: 50,
-        category: "wax",
+        category: "bee-products",
         image: "images/bee-wax.jpg",
         description: "شمع عسل طبيعي نقي، مثالي للاستخدام في العلاج بالشمع أو صناعة الشموع."
     },
