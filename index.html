@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر العسل الطبيعي | عسل أصلي 100%</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Fixed Header -->
+    <div id="fixed-header">
+        <!-- Header content same as before -->
+    </div>
+
+    <!-- Main Content - Home Page -->
+    <main id="home-page">
+        <section class="page-header">
+            <h1>أجود أنواع العسل الطبيعي</h1>
+            <p>من خلايا النحل مباشرة إلى منزلك</p>
+        </section>
+        
+        <div class="container">
+            <h2>منتجاتنا المميزة</h2>
+            <div class="product-grid" id="featured-products">
+                <!-- Products will be loaded from JavaScript -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Footer content same as before -->
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/products.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    
+    <script>
+        // Load featured products on home page
+        document.addEventListener('DOMContentLoaded', function() {
+            const featuredContainer = document.getElementById('featured-products');
+            if (featuredContainer) {
+                // Get first 4 products as featured
+                const featuredProducts = products.slice(0, 4);
+                
+                let html = '';
+                featuredProducts.forEach(product => {
+                    html += `
+                        <div class="product-card">
+                            <img src="${product.image}" alt="${product.title}">
+                            <h3>${product.title}</h3>
+                            <p class="price">${product.price} ر.س</p>
+                            <a href="#" class="btn add-to-cart" 
+                               data-id="${product.id}" 
+                               data-name="${product.title}" 
+                               data-price="${product.price}"
+                               data-image="${product.image}">
+                               أضف إلى السلة
+                            </a>
+                        </div>
+                    `;
+                });
+                
+                featuredContainer.innerHTML = html;
+            }
+        });
+    </script>
+</body>
+</html>
