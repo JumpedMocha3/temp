@@ -249,6 +249,126 @@ main {
     margin-bottom: 20px;
 }
 
+/* Cart Modal */
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    background: white;
+    z-index: 2000;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    overflow-y: auto;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-items {
+    padding: 15px;
+}
+
+.cart-item {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-left: 15px;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.cart-item-price {
+    color: #d4a017;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity-btn {
+    background: #f0f0f0;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.cart-total {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    font-weight: bold;
+    text-align: left;
+}
+
+.checkout-btn {
+    display: block;
+    background: #25D366;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background: #128C7E;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1500;
+}
+
 /* Footer */
 footer {
     background: #333;
