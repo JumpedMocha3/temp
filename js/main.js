@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         cartCountElements.forEach(element => {
             element.textContent = totalItems;
+            element.classList.toggle('d-none', totalItems === 0);
         });
     }
 });
