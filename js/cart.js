@@ -1,5 +1,6 @@
 // js/cart.js
 document.addEventListener('DOMContentLoaded', function() {
+    // DOM Elements
     const cartModal = document.getElementById('cart-modal');
     const cartOverlay = document.getElementById('cart-overlay');
     const cartIcon = document.getElementById('cart-icon');
@@ -10,9 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartTotal = document.getElementById('cart-total');
     const whatsappCheckout = document.getElementById('whatsapp-checkout');
     
+    // Initialize cart
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    updateCartCount();
     
-    // Open cart
+    // Event Listeners
     if (cartIcon) {
         cartIcon.addEventListener('click', function(e) {
             e.preventDefault();
@@ -20,7 +23,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Close cart
     if (closeCart) {
         closeCart.addEventListener('click', closeCartModal);
     }
@@ -44,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
+    // Cart Functions
     function openCart() {
         cartModal.style.display = 'block';
         cartOverlay.style.display = 'block';
@@ -95,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (cart.length === 0) {
             emptyCartMessage.style.display = 'block';
             cartItemsContainer.innerHTML = '';
+            cartTotal.textContent = '0';
         } else {
             emptyCartMessage.style.display = 'none';
             
@@ -128,29 +132,33 @@ document.addEventListener('DOMContentLoaded', function() {
             cartTotal.textContent = total;
             
             // Add event listeners to cart items
-            document.querySelectorAll('.decrease-quantity').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const itemId = this.closest('.cart-item').getAttribute('data-id');
-                    updateQuantity(itemId, -1);
-                });
-            });
-            
-            document.querySelectorAll('.increase-quantity').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const itemId = this.closest('.cart-item').getAttribute('data-id');
-                    updateQuantity(itemId, 1);
-                });
-            });
-            
-            document.querySelectorAll('.remove-item').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const itemId = this.closest('.cart-item').getAttribute('data-id');
-                    removeItem(itemId);
-                });
-            });
+            addCartItemEventListeners();
         }
         
         updateWhatsAppLink();
+    }
+    
+    function addCartItemEventListeners() {
+        document.querySelectorAll('.decrease-quantity').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const itemId = this.closest('.cart-item').getAttribute('data-id');
+                updateQuantity(itemId, -1);
+            });
+        });
+        
+        document.querySelectorAll('.increase-quantity').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const itemId = this.closest('.cart-item').getAttribute('data-id');
+                updateQuantity(itemId, 1);
+            });
+        });
+        
+        document.querySelectorAll('.remove-item').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const itemId = this.closest('.cart-item').getAttribute('data-id');
+                removeItem(itemId);
+            });
+        });
     }
     
     function updateQuantity(itemId, change) {
@@ -221,6 +229,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 3000);
     }
     
-    // Initialize
-    updateCartCount();
+    // Initialize cart display
+    updateCartDisplay();
 });
