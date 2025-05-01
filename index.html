@@ -3,147 +3,718 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر العسل الطبيعي | عسل أصلي 100%</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>عسل أصلي - متجر العسل الطبيعي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #d4a017;
+            --secondary-color: #333;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f5f5f5;
+            color: var(--secondary-color);
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .dev3-main {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .dev3-menu {
+            padding: 10px 0;
+        }
+        
+        .dev3-item {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .dev3-item > li {
+            position: relative;
+            padding: 10px 15px;
+        }
+        
+        .dev3-item > li > a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .dev3-item > li > a:hover {
+            color: var(--primary-color);
+        }
+        
+        .dev3-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+            list-style: none;
+            padding: 10px 0;
+            border-radius: 5px;
+        }
+        
+        .dev3-dropdown:hover .dev3-dropdown-menu {
+            display: block;
+        }
+        
+        .dev3-dropdown-menu li {
+            padding: 5px 15px;
+        }
+        
+        .dev3-dropdown-menu li a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .dev3-dropdown-menu li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .dev3-mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+            padding: 20px;
+        }
+        
+        .dev3-dropdown:hover .dev3-mega-menu {
+            display: block;
+        }
+        
+        .dev3sp-header {
+            font-weight: bold;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+        }
+        
+        .hero-section {
+            background-image: url('https://images.unsplash.com/photo-1587049352851-8d4e89133924');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.4);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        .product-body {
+            padding: 15px;
+        }
+        
+        .product-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
+        }
+        
+        .product-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #b78a14;
+            border-color: #b78a14;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            width: 300px;
+        }
+        
+        .search-container input {
+            padding-right: 40px;
+            border-radius: 20px;
+        }
+        
+        .search-container button {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+        }
+        
+        /* Cart */
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* RTL fixes */
+        .dev3-item {
+            flex-direction: row;
+        }
+        
+        .dev3-dropdown-menu {
+            right: 0;
+            left: auto;
+        }
+        
+        .dev3-mega-menu {
+            right: 0;
+            left: auto;
+        }
+    </style>
 </head>
 <body>
-    <!-- Fixed Header -->
-    <div id="fixed-header">
-        <div class="container header-container">
-            <!-- Top Header -->
-            <div class="header-top">
-                <button class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </button>
-                
-                <a class="logo" href="index.html">
-                    <img src="images/logo.png" alt="متجر العسل الطبيعي">
-                    متجر العسل الطبيعي
-                </a>
-                
-                <div class="search-container">
-                    <input type="text" class="search-input" placeholder="البحث عن منتج">
-                    <button class="search-button">
-                        <i class="fas fa-search"></i>
-                    </button>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <div class="search-container me-auto">
+                    <input type="text" class="form-control" placeholder="ابحث عن منتجات العسل...">
+                    <button type="submit"><i class="fas fa-search"></i></button>
                 </div>
-                
-                <a href="#" class="cart-icon" id="cart-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a>
+                <div class="d-flex align-items-center">
+                    <a href="#" class="btn btn-primary me-3 position-relative" id="cartButton">
+                        <i class="fas fa-shopping-cart me-2"></i> سلة التسوق
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                </div>
             </div>
-            
-            <!-- Bottom Header - Categories -->
-            <div class="header-bottom">
-                <nav class="main-nav">
-                    <div class="nav-item">
-                        <a href="index.html">الصفحة الرئيسية</a>
+        </nav>
+        
+        <!-- Main Menu -->
+        <div class="dev3-main border-bottom header-bottom">
+          <div class="container">
+            <nav class="dev3-menu main-menue" style="cursor: grab;">       
+              <ul class="dev3-item" style="left: 0px; right: 0px; transition: none;">
+                <li class="dev3-dropdown" style="pointer-events: auto;">
+                  <a href="/categories" class="all-cats">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M2.5 4.16699H17.5" stroke="#334155" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M10 10L17.5 10" stroke="#334155" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M2.5 15.833H17.5" stroke="#334155" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> </svg>
+                    جميع التصنيفات 
+                  </a>
+                  <div class="dev3-mega-menu">
+                    <div class="container-fluid p-0">
+                      <div class="row g-0">
+                        <div class="col">
+                            <ul class="dev3sp-list2">
+                              <li class="dev3sp-header">
+                                  <a href="honey.html" class="text-start d-block"><span>العسل</span></a>
+                              </li>
+                              <li class="sub-menu-head"><a class="text-start d-block" href="honey-types.html">جميع انواع العسل</a></li>
+                              <li class="sub-menu-head"><a class="text-start d-block" href="beeswax.html">شمع عسل</a></li>
+                              <li class="sub-menu-head"><a class="text-start d-block" href="honey-products.html">منتجات بالعسل</a></li>
+                            </ul>
+                          </div>
+                        <div class="col">
+                          <h3 class="dev3sp-header text-gray-1 h5 text-start"> أفضل الماركات  </h3>
+                          <div class="markat text-center">
+                           
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    
-                    <div class="nav-item has-dropdown">
-                        <a href="categories/honey.html">العسل</a>
-                        <div class="dropdown-menu">
-                            <a href="categories/honey.html?type=sidr" class="dropdown-item">عسل سدر</a>
-                            <a href="categories/honey.html?type=talh" class="dropdown-item">عسل طلح</a>
-                            <a href="categories/honey.html?type=samar" class="dropdown-item">عسل سمر</a>
+                  </div>
+                </li>
+                
+                <li class="dev3-dropdown main-menu" style="pointer-events: auto;">
+                  <a href="index.html">
+                    <span>الصفحة الرئيسية</span>
+                  </a>
+                </li>
+                
+                <li class="dev3-dropdown main-menu" style="pointer-events: auto;">
+                  <a href="products.html">
+                    <span>جميع المنتجات</span>
+                  </a>
+                </li>
+                
+                <li class="dev3-dropdown main-menu" style="pointer-events: auto;">
+                  <a href="honey.html">
+                    <span>العسل</span>
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M1.5 1.90039C1.5 1.90039 3.91198 6.10039 5.00101 6.10039C6.09003 6.10039 8.5 1.90039 8.5 1.90039" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </svg>
+                  </a>
+                  <ul class="dev3-dropdown-menu">
+                    <li>
+                      <a href="honey-types.html">جميع انواع العسل</a>
+                    </li>
+                    <li>
+                      <a href="beeswax.html">شمع عسل</a>
+                    </li>
+                    <li>
+                      <a href="honey-products.html">منتجات بالعسل</a>
+                    </li>
+                  </ul>
+                </li>
+                
+                <li class="dev3-dropdown main-menu" style="pointer-events: auto;">
+                  <a href="offers.html">
+                    <span>عروض مميزة</span>
+                  </a>
+                </li>
+                
+                <li class="dev3-dropdown main-menu" style="pointer-events: auto;">
+                  <a href="honey-mixes.html">
+                    <span>خلطات العسل</span>
+                  </a>
+                </li>
+                
+                <li class="dev3-dropdown main-menu" style="pointer-events: auto;">
+                  <a href="bee-products.html">
+                    <span>منتجات النحل</span>
+                  </a>
+                </li>
+                
+                <li class="dev3-dropdown main-menu" style="pointer-events: auto;">
+                  <a href="ghee-oils.html">
+                    <span>السمن والزيوت</span>
+                  </a>
+                </li>
+                
+                <li class="dev3-dropdown main-menu" style="pointer-events: auto;">
+                  <a href="wholesale.html">
+                    <span>قسم الجملة</span>
+                  </a>
+                </li>
+                
+                <li class="dev3-dropdown main-menu" style="pointer-events: auto;">
+                  <a href="coffee.html">
+                    <span>قهوة بن سفر</span>
+                  </a>
+                </li>
+                
+                <li class="dev3-dropdown main-menu" style="pointer-events: auto;">
+                  <a href="other-products.html">
+                    <span>منتجات اخرى</span>
+                  </a>
+                </li>
+                
+                <li class="dev3-dropdown main-menu" style="pointer-events: auto;">
+                  <a href="categories.html">
+                    <span>جميع التصنيفات</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content container">
+            <h1 class="display-4 fw-bold mb-4">أجود أنواع العسل الطبيعي</h1>
+            <p class="lead mb-5">عسل طبيعي 100% من خلايا النحل مباشرة إلى منزلك</p>
+            <a href="products.html" class="btn btn-primary btn-lg px-4 me-2">تسوق الآن</a>
+            <a href="offers.html" class="btn btn-outline-light btn-lg px-4">عروض خاصة</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">تصفح حسب التصنيف</h2>
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="honey.html" class="text-decoration-none">
+                        <div class="card category-card h-100 text-center">
+                            <img src="https://via.placeholder.com/300x200?text=العسل" class="card-img-top" alt="العسل">
+                            <div class="card-body">
+                                <h5 class="card-title">العسل</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="bee-products.html" class="text-decoration-none">
+                        <div class="card category-card h-100 text-center">
+                            <img src="https://via.placeholder.com/300x200?text=منتجات+النحل" class="card-img-top" alt="منتجات النحل">
+                            <div class="card-body">
+                                <h5 class="card-title">منتجات النحل</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="honey-mixes.html" class="text-decoration-none">
+                        <div class="card category-card h-100 text-center">
+                            <img src="https://via.placeholder.com/300x200?text=خلطات+العسل" class="card-img-top" alt="خلطات العسل">
+                            <div class="card-body">
+                                <h5 class="card-title">خلطات العسل</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="ghee-oils.html" class="text-decoration-none">
+                        <div class="card category-card h-100 text-center">
+                            <img src="https://via.placeholder.com/300x200?text=السمن+والزيوت" class="card-img-top" alt="السمن والزيوت">
+                            <div class="card-body">
+                                <h5 class="card-title">السمن والزيوت</h5>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">منتجات مميزة</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x300?text=عسل+سدر" class="product-img" alt="عسل سدر">
+                        <div class="product-body">
+                            <h5 class="product-title">عسل سدر جبلي</h5>
+                            <p class="text-muted">عسل طبيعي 100% من أشجار السدر</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">150 ر.س</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-product="عسل سدر جبلي" data-price="150">أضف للسلة</button>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="nav-item">
-                        <a href="categories/offers.html">عروض مميزة</a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x300?text=عسل+طلح" class="product-img" alt="عسل طلح">
+                        <div class="product-body">
+                            <h5 class="product-title">عسل طلح أصلي</h5>
+                            <p class="text-muted">عسل طبيعي من أزهار شجرة الطلح</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">120 ر.س</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-product="عسل طلح أصلي" data-price="120">أضف للسلة</button>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="nav-item">
-                        <a href="categories/mixtures.html">خلطات العسل</a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x300?text=عسل+سمر" class="product-img" alt="عسل سمر">
+                        <div class="product-body">
+                            <h5 class="product-title">عسل سمر جبلي</h5>
+                            <p class="text-muted">عسل طبيعي من أشجار السمر</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">180 ر.س</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-product="عسل سمر جبلي" data-price="180">أضف للسلة</button>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="nav-item">
-                        <a href="categories/bee-products.html">منتجات النحل</a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x300?text=شمع+عسل" class="product-img" alt="شمع عسل">
+                        <div class="product-body">
+                            <h5 class="product-title">شمع عسل طبيعي</h5>
+                            <p class="text-muted">شمع عسل نقي 100%</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">90 ر.س</span>
+                                <button class="btn btn-sm btn-primary add-to-cart" data-product="شمع عسل طبيعي" data-price="90">أضف للسلة</button>
+                            </div>
+                        </div>
                     </div>
-                </nav>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Cart Overlay -->
-    <div class="cart-overlay" id="cart-overlay"></div>
+    <!-- Special Offers -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="section-title">عروض خاصة</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img src="https://via.placeholder.com/400x300?text=عرض+خاص" class="img-fluid rounded-start h-100" alt="عرض خاص">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title">خصم 20% على جميع أنواع العسل</h5>
+                                    <p class="card-text">احصل على خصم 20% على جميع أنواع العسل لمدة محدودة فقط.</p>
+                                    <p class="text-danger">ينتهي العرض خلال 3 أيام</p>
+                                    <a href="offers.html" class="btn btn-primary">استفد من العرض</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="row g-0">
+                            <div class="col-md-6">
+                                <img src="https://via.placeholder.com/400x300?text=عرض+الجملة" class="img-fluid rounded-start h-100" alt="عرض الجملة">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card-body">
+                                    <h5 class="card-title">خصم 30% للكميات الكبيرة</h5>
+                                    <p class="card-text">خصم خاص على المشتريات بالجملة بحد أدنى 5 كيلو.</p>
+                                    <p class="text-danger">عرض لفترة محدودة</p>
+                                    <a href="wholesale.html" class="btn btn-primary">اطلب الآن</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">مقالات عن العسل</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x250?text=فوائد+العسل" class="card-img-top" alt="فوائد العسل">
+                        <div class="card-body">
+                            <h5 class="card-title">فوائد عسل النحل لتعزيز المناعة</h5>
+                            <p class="card-text">تعرف على أهم فوائد العسل في تقوية جهاز المناعة ومحاربة الأمراض.</p>
+                            <a href="article1.html" class="btn btn-outline-primary">اقرأ المزيد</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x250?text=عسل+الطلح" class="card-img-top" alt="عسل الطلح">
+                        <div class="card-body">
+                            <h5 class="card-title">فوائد ومميزات عسل الطلح البلدي</h5>
+                            <p class="card-text">كل ما تريد معرفته عن عسل الطلح وفوائده الصحية المذهلة.</p>
+                            <a href="article2.html" class="btn btn-outline-primary">اقرأ المزيد</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x250?text=عسل+السدر" class="card-img-top" alt="عسل السدر">
+                        <div class="card-body">
+                            <h5 class="card-title">عسل السدر فوائده واستخداماته</h5>
+                            <p class="card-text">لماذا يعتبر عسل السدر من أفضل أنواع العسل؟ اكتشف الإجابة هنا.</p>
+                            <a href="article3.html" class="btn btn-outline-primary">اقرأ المزيد</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Cart Modal -->
-    <div class="cart-modal" id="cart-modal">
-        <div class="cart-header">
-            <h3>سلة المشتريات (<span id="cart-count">0</span> عناصر)</h3>
-            <button class="close-cart" id="close-cart">&times;</button>
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">سلة التسوق</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="cartItems">
+                    <p class="text-muted text-center py-3">سلة التسوق فارغة</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+                    <button type="button" class="btn btn-primary">إتمام الشراء</button>
+                </div>
+            </div>
         </div>
-        <div class="cart-items" id="cart-items">
-            <p id="empty-cart-message">سلة المشتريات فارغة</p>
-        </div>
-        <div class="cart-total">
-            الإجمالي: <span id="cart-total">0</span> ر.س
-        </div>
-        <a href="#" class="checkout-btn" id="whatsapp-checkout">
-            <i class="fab fa-whatsapp"></i> إتمام الطلب عبر واتساب
-        </a>
     </div>
 
-    <!-- Main Content -->
-    <main>
-        <section class="page-header">
-            <h1>أجود أنواع العسل الطبيعي</h1>
-            <p>من خلايا النحل مباشرة إلى منزلك</p>
-        </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Cart functionality
+        let cart = [];
         
-        <div class="container">
-            <h2 class="section-title">منتجاتنا المميزة</h2>
-            <div class="product-grid" id="featured-products">
-                <!-- Products loaded from JavaScript -->
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>روابط سريعة</h3>
-                    <ul>
-                        <li><a href="index.html">الصفحة الرئيسية</a></li>
-                        <li><a href="products.html">جميع المنتجات</a></li>
-                        <li><a href="about.html">من نحن</a></li>
-                        <li><a href="contact.html">اتصل بنا</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>خدمة العملاء</h3>
-                    <ul>
-                        <li><a href="shipping.html">الشحن والتوصيل</a></li>
-                        <li><a href="returns.html">سياسة الإرجاع</a></li>
-                        <li><a href="faq.html">أسئلة شائعة</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>تواصل معنا</h3>
-                    <ul>
-                        <li><i class="fas fa-phone"></i> +966 123 456 789</li>
-                        <li><i class="fas fa-envelope"></i> info@honey-store.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> الرياض، السعودية</li>
-                    </ul>
-                </div>
-            </div>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load cart from localStorage
+            const savedCart = localStorage.getItem('honeyCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartCount();
+            }
             
-            <div class="copyright">
-                <p>© 2023 متجر العسل الطبيعي. جميع الحقوق محفوظة.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="js/products.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/cart.js"></script>
+            // Add to cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const product = this.getAttribute('data-product');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    
+                    // Check if product already in cart
+                    const existingItem = cart.find(item => item.product === product);
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            product: product,
+                            price: price,
+                            quantity: 1
+                        });
+                    }
+                    
+                    // Save to localStorage
+                    localStorage.setItem('honeyCart', JSON.stringify(cart));
+                    updateCartCount();
+                    
+                    // Show success message
+                    alert(`تم إضافة ${product} إلى سلة التسوق`);
+                });
+            });
+            
+            // Cart button click
+            document.getElementById('cartButton').addEventListener('click', function(e) {
+                e.preventDefault();
+                showCartModal();
+            });
+            
+            // Dropdown menus
+            const dropdowns = document.querySelectorAll('.dev3-dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('mouseenter', function() {
+                    const menu = this.querySelector('.dev3-dropdown-menu, .dev3-mega-menu');
+                    if (menu) menu.style.display = 'block';
+                });
+                
+                dropdown.addEventListener('mouseleave', function() {
+                    const menu = this.querySelector('.dev3-dropdown-menu, .dev3-mega-menu');
+                    if (menu) menu.style.display = 'none';
+                });
+            });
+        });
+        
+        function updateCartCount() {
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+        
+        function showCartModal() {
+            const cartModal = new bootstrap.Modal(document.getElementById('cartModal'));
+            const cartItemsEl = document.getElementById('cartItems');
+            
+            if (cart.length === 0) {
+                cartItemsEl.innerHTML = '<p class="text-muted text-center py-3">سلة التسوق فارغة</p>';
+            } else {
+                let html = '<table class="table">';
+                html += '<thead><tr><th>المنتج</th><th>السعر</th><th>الكمية</th><th>المجموع</th></tr></thead>';
+                html += '<tbody>';
+                
+                let total = 0;
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    
+                    html += `<tr>
+                        <td>${item.product}</td>
+                        <td>${item.price} ر.س</td>
+                        <td>${item.quantity}</td>
+                        <td>${itemTotal} ر.س</td>
+                    </tr>`;
+                });
+                
+                html += '</tbody>';
+                html += `<tfoot><tr><th colspan="3">الإجمالي</th><th>${total} ر.س</th></tr></tfoot>`;
+                html += '</table>';
+                
+                cartItemsEl.innerHTML = html;
+            }
+            
+            cartModal.show();
+        }
+    </script>
 </body>
 </html>
