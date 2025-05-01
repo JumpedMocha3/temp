@@ -10,144 +10,57 @@
 <body>
     <!-- Fixed Header -->
     <div id="fixed-header">
-        <!-- Top Header -->
-        <div class="dev3-main border-bottom header-top">
-            <div class="container">
-                <nav class="dev3-menu">
-                    <!-- Logo -->
-                    <div class="dev3-item dev3-logo">
-                        <a class="logo" href="index.html" title="متجر العسل الطبيعي">
-                            <h1>متجر العسل الطبيعي</h1>
-                        </a>
-                        <a href="#" class="dev3-mobile-close">
-                            <i class="fa fa-close"></i>
-                        </a>
+        <div class="container header-container">
+            <!-- Top Header -->
+            <div class="header-top">
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+                <a class="logo" href="index.html">
+                    متجر العسل الطبيعي
+                </a>
+                
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="البحث عن منتج">
+                    <button class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <a href="#" class="cart-icon" id="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </a>
+            </div>
+            
+            <!-- Bottom Header - Categories -->
+            <div class="header-bottom">
+                <nav class="main-nav">
+                    <div class="nav-item">
+                        <a href="index.html">الصفحة الرئيسية</a>
                     </div>
                     
-                    <!-- Search Bar -->
-                    <div class="dev3-item dev3-searchbar mx-2">
-                        <div class="form">
-                            <div>
-                                <input type="text" class="input-search" placeholder="البحث عن منتج" autocomplete="off">
-                                <i class="close fa-solid fa-xmark"></i>
-                            </div>
-                            <button type="submit" class="btn-form" aria-label="زر البحث">
-                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.16699 2.33366C4.94533 2.33366 2.33366 4.94533 2.33366 8.16699C2.33366 11.3887 4.94533 14.0003 8.16699 14.0003C9.73861 14.0003 11.1651 13.3788 12.214 12.3681C12.2359 12.3396 12.2599 12.3122 12.2861 12.2861C12.3122 12.2599 12.3396 12.2359 12.3681 12.214C13.3788 11.1651 14.0003 9.73861 14.0003 8.16699C14.0003 4.94533 11.3887 2.33366 8.16699 2.33366ZM14.0269 12.8484C15.0533 11.5653 15.667 9.93784 15.667 8.16699C15.667 4.02486 12.3091 0.666992 8.16699 0.666992C4.02486 0.666992 0.666992 4.02486 0.666992 8.16699C0.666992 12.3091 4.02486 15.667 8.16699 15.667C9.93784 15.667 11.5653 15.0533 12.8484 14.0269L15.9111 17.0896C16.2365 17.415 16.7641 17.415 17.0896 17.0896C17.415 16.7641 17.415 16.2365 17.0896 15.9111L14.0269 12.8484Z" fill="#64748B"></path>
-                                </svg>
-                            </button>
+                    <div class="nav-item has-dropdown">
+                        <a href="categories/honey.html">العسل</a>
+                        <div class="dropdown-menu">
+                            <a href="categories/honey.html?type=sidr" class="dropdown-item">عسل سدر</a>
+                            <a href="categories/honey.html?type=talh" class="dropdown-item">عسل طلح</a>
+                            <a href="categories/honey.html?type=samar" class="dropdown-item">عسل سمر</a>
                         </div>
                     </div>
                     
-                    <!-- Cart Icon -->
-                    <ul class="dev3-item">
-                        <li class="dev3-dropdown-cart dev3-end px-2 d-flex align-items-center">
-                            <a aria-label="عربة التسوق" href="#" id="cart-icon">
-                                <em class="round carts-products-counter count">0</em>
-                                <svg width="22" height="24" viewBox="0 0 22 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="0.999756" y="7.11133" width="20" height="15.8889" rx="4" stroke="#334155" stroke-width="1.5"></rect>
-                                    <path d="M15.9998 9.55556V5C15.9998 2.79086 14.2089 1 11.9998 1H9.99976C7.79062 1 5.99976 2.79086 5.99976 5L5.99976 9.55556" stroke="#334155" stroke-width="1.5" stroke-linecap="round"></path>
-                                </svg>
-                                <span class="hide-text">عربة التسوق</span>
-                            </a>
-                        </li>
-                    </ul>
-                    
-                    <!-- Mobile Menu Button -->
-                    <div class="mobile-menu-btn">
-                        <i class="fas fa-bars"></i>
+                    <div class="nav-item">
+                        <a href="categories/offers.html">عروض مميزة</a>
                     </div>
-                </nav>
-            </div>
-        </div>
-        
-        <!-- Bottom Header - Categories -->
-        <div class="dev3-main border-bottom header-bottom">
-            <div class="container">
-                <nav class="dev3-menu main-menue">
-                    <ul class="dev3-item">
-                        <!-- All Categories Dropdown -->
-                        <li class="dev3-dropdown">
-                            <a href="categories/" class="all-cats">
-                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M2.5 4.16699H17.5" stroke="#334155" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    <path d="M10 10L17.5 10" stroke="#334155" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    <path d="M2.5 15.833H17.5" stroke="#334155" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                                جميع التصنيفات
-                            </a>
-                            <div class="dev3-mega-menu">
-                                <div class="container-fluid p-0">
-                                    <div class="row g-0">
-                                        <div class="col">
-                                            <ul class="dev3sp-list2">
-                                                <li class="dev3sp-header">
-                                                    <a href="categories/honey.html" class="text-start d-block"><span>العسل</span></a>
-                                                </li>
-                                                <li class="sub-menu-head"><a class="text-start d-block" href="categories/honey.html">جميع انواع العسل</a></li>
-                                                <li class="sub-menu-head"><a class="text-start d-block" href="categories/bee-products.html">منتجات النحل</a></li>
-                                                <li class="sub-menu-head"><a class="text-start d-block" href="categories/mixtures.html">خلطات العسل</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        
-                        <!-- Main Menu Items -->
-                        <li class="dev3-dropdown main-menu">
-                            <a href="index.html">
-                                <span>الصفحة الرئيسية</span>
-                            </a>
-                        </li>
-                        
-                        <li class="dev3-dropdown main-menu">
-                            <a href="products.html">
-                                <span>جميع المنتجات</span>
-                            </a>
-                        </li>
-                        
-                        <li class="dev3-dropdown main-menu">
-                            <a href="categories/honey.html">
-                                <span>العسل</span>
-                                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1.5 1.90039C1.5 1.90039 3.91198 6.10039 5.00101 6.10039C6.09003 6.10039 8.5 1.90039 8.5 1.90039" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </a>
-                            <ul class="dev3-dropdown-menu">
-                                <li>
-                                    <a href="categories/honey.html">جميع انواع العسل</a>
-                                </li>
-                                <li>
-                                    <a href="categories/honey.html?type=sidr">عسل سدر</a>
-                                </li>
-                                <li>
-                                    <a href="categories/honey.html?type=talh">عسل طلح</a>
-                                </li>
-                                <li>
-                                    <a href="categories/honey.html?type=samar">عسل سمر</a>
-                                </li>
-                            </ul>
-                        </li>
-                        
-                        <li class="dev3-dropdown main-menu">
-                            <a href="categories/offers.html">
-                                <span>عروض مميزة</span>
-                            </a>
-                        </li>
-                        
-                        <li class="dev3-dropdown main-menu">
-                            <a href="categories/mixtures.html">
-                                <span>خلطات العسل</span>
-                            </a>
-                        </li>
-                        
-                        <li class="dev3-dropdown main-menu">
-                            <a href="categories/bee-products.html">
-                                <span>منتجات النحل</span>
-                            </a>
-                        </li>
-                    </ul>
+                    
+                    <div class="nav-item">
+                        <a href="categories/mixtures.html">خلطات العسل</a>
+                    </div>
+                    
+                    <div class="nav-item">
+                        <a href="categories/bee-products.html">منتجات النحل</a>
+                    </div>
                 </nav>
             </div>
         </div>
