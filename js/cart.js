@@ -78,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const cartCountElements = document.querySelectorAll('.carts-products-counter');
         cartCountElements.forEach(element => {
             element.textContent = totalItems;
+            element.classList.toggle('d-none', totalItems === 0);
         });
         
         // Update cart items
