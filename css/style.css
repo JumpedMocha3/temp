@@ -289,4 +289,245 @@ main {
     main {
         margin-top: 60px;
     }
+
+/* Page Header */
+.page-header {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../images/honey-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Cart Modal */
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    background: white;
+    z-index: 2000;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    overflow-y: auto;
+}
+
+.cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-items {
+    padding: 15px;
+}
+
+.cart-item {
+    display: flex;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.cart-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-left: 15px;
+}
+
+.cart-item-details {
+    flex: 1;
+}
+
+.cart-item-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.cart-item-price {
+    color: #d4a017;
+}
+
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity-btn {
+    background: #f0f0f0;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.cart-total {
+    padding: 15px;
+    border-top: 1px solid #eee;
+    font-weight: bold;
+    text-align: left;
+}
+
+.checkout-btn {
+    display: block;
+    background: #25D366;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    margin: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background: #128C7E;
+}
+
+.close-cart {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Overlay */
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1500;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    padding: 40px 0;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li i {
+    margin-left: 10px;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .dev3-item.mx-3, .dev3-item.mx-2 {
+        display: none;
+    }
+    
+    .mobile-menu-btn {
+        display: block;
+    }
+    
+    .dev3-menu {
+        flex-wrap: wrap;
+    }
+    
+    .dev3-searchbar {
+        order: 3;
+        width: 100%;
+        margin: 10px 0;
+        max-width: 100%;
+    }
+    
+    main {
+        margin-top: 160px;
+    }
+}
+/* Ensure header is visible on all pages */
+#fixed-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Make sure main content doesn't hide behind header */
+main {
+    margin-top: 120px; /* Adjust based on your header height */
+}
+
+/* Cart notification style */
+.cart-notification {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 10000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease;
+}
+
+.cart-notification.fade-out {
+    animation: fadeOut 0.5s ease;
+    opacity: 0;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
