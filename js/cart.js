@@ -1,11 +1,7 @@
 // js/cart.js
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize cart from localStorage or empty array
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    
-    // Get DOM elements
     const cartModal = document.getElementById('cart-modal');
-    const overlay = document.getElementById('overlay');
+    const cartOverlay = document.getElementById('cart-overlay');
     const cartIcon = document.getElementById('cart-icon');
     const closeCart = document.getElementById('close-cart');
     const cartItemsContainer = document.getElementById('cart-items');
@@ -13,43 +9,92 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartCount = document.getElementById('cart-count');
     const cartTotal = document.getElementById('cart-total');
     const whatsappCheckout = document.getElementById('whatsapp-checkout');
-
-    // Function to update cart count in header
+    
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+    // Open cart
+    if (cartIcon) {
+        cartIcon.addEventListener('click', function(e) {
+            e.preventDefault();
+            openCart();
+        });
+    }
+    
+    // Close cart
+    if (closeCart) {
+        closeCart.addEventListener('click', closeCartModal);
+    }
+    
+    if (cartOverlay) {
+        cartOverlay.addEventListener('click', closeCartModal);
+    }
+    
+    // Add to cart functionality
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
+            e.preventDefault();
+            const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
+            
+            const id = button.getAttribute('data-id');
+            const name = button.getAttribute('data-name');
+            const price = parseFloat(button.getAttribute('data-price'));
+            const image = button.getAttribute('data-image');
+            
+            addToCart(id, name, price, image);
+        }
+    });
+    
+    function openCart() {
+        cartModal.style.display = 'block';
+        cartOverlay.style.display = 'block';
+        document.body.classList.add('no-scroll');
+        updateCartDisplay();
+    }
+    
+    function closeCartModal() {
+        cartModal.style.display = 'none';
+        cartOverlay.style.display = 'none';
+        document.body.classList.remove('no-scroll');
+    }
+    
+    function addToCart(id, name, price, image) {
+        const existingItem = cart.find(item => item.id === id);
+        
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cart.push({
+                id,
+                name,
+                price,
+                image,
+                quantity: 1
+            });
+        }
+        
+        saveCart();
+        showCartNotification(name);
+    }
+    
+    function saveCart() {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+    }
+    
     function updateCartCount() {
         const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-        const cartCountElements = document.querySelectorAll('.cart-count, .carts-products-counter');
+        const cartCountElements = document.querySelectorAll('.cart-count');
         
         cartCountElements.forEach(element => {
             element.textContent = totalItems;
-            element.style.display = totalItems > 0 ? 'inline-block' : 'none';
+            element.classList.toggle('active', totalItems > 0);
         });
     }
-
-    // Function to show cart modal
-    function openCartModal() {
-        cartModal.style.display = 'block';
-        overlay.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-        updateCartDisplay();
-    }
-
-    // Function to close cart modal
-    function closeCartModal() {
-        cartModal.style.display = 'none';
-        overlay.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-
-    // Function to update cart display
+    
     function updateCartDisplay() {
-        // Update cart count
-        updateCartCount();
-        
-        // Update cart items display
         if (cart.length === 0) {
             emptyCartMessage.style.display = 'block';
-            cartItemsContainer.innerHTML = '<p id="empty-cart-message">سلة المشتريات فارغة</p>';
-            if (cartTotal) cartTotal.textContent = '0';
+            cartItemsContainer.innerHTML = '';
         } else {
             emptyCartMessage.style.display = 'none';
             
@@ -80,64 +125,56 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             cartItemsContainer.innerHTML = itemsHTML;
-            if (cartTotal) cartTotal.textContent = total;
+            cartTotal.textContent = total;
             
             // Add event listeners to cart items
-            addCartItemEventListeners();
+            document.querySelectorAll('.decrease-quantity').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const itemId = this.closest('.cart-item').getAttribute('data-id');
+                    updateQuantity(itemId, -1);
+                });
+            });
+            
+            document.querySelectorAll('.increase-quantity').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const itemId = this.closest('.cart-item').getAttribute('data-id');
+                    updateQuantity(itemId, 1);
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const itemId = this.closest('.cart-item').getAttribute('data-id');
+                    removeItem(itemId);
+                });
+            });
         }
         
-        // Update WhatsApp link
         updateWhatsAppLink();
     }
-
-    // Function to add event listeners to cart items
-    function addCartItemEventListeners() {
-        document.querySelectorAll('.decrease-quantity').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const itemId = e.target.closest('.cart-item').getAttribute('data-id');
-                const item = cart.find(item => item.id === itemId);
-                
-                if (item.quantity > 1) {
-                    item.quantity -= 1;
-                } else {
-                    cart = cart.filter(item => item.id !== itemId);
-                }
-                
-                saveCart();
-                updateCartDisplay();
-            });
-        });
+    
+    function updateQuantity(itemId, change) {
+        const item = cart.find(item => item.id === itemId);
         
-        document.querySelectorAll('.increase-quantity').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const itemId = e.target.closest('.cart-item').getAttribute('data-id');
-                const item = cart.find(item => item.id === itemId);
-                
-                item.quantity += 1;
-                saveCart();
-                updateCartDisplay();
-            });
-        });
-        
-        document.querySelectorAll('.remove-item').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const itemId = e.target.closest('.cart-item').getAttribute('data-id');
+        if (item) {
+            item.quantity += change;
+            
+            if (item.quantity < 1) {
                 cart = cart.filter(item => item.id !== itemId);
-                saveCart();
-                updateCartDisplay();
-            });
-        });
+            }
+            
+            saveCart();
+            updateCartDisplay();
+        }
     }
-
-    // Function to save cart to localStorage
-    function saveCart() {
-        localStorage.setItem('cart', JSON.stringify(cart));
+    
+    function removeItem(itemId) {
+        cart = cart.filter(item => item.id !== itemId);
+        saveCart();
+        updateCartDisplay();
     }
-
-    // Function to update WhatsApp checkout link
+    
     function updateWhatsAppLink() {
-        if (!whatsappCheckout) return;
-        
         if (cart.length === 0) {
             whatsappCheckout.removeAttribute('href');
             return;
@@ -158,78 +195,32 @@ document.addEventListener('DOMContentLoaded', function() {
         message += 'رقم الجوال: \n\n';
         message += 'شكراً لكم!';
         
-        const encodedMessage = encodeURIComponent(message);
-        whatsappCheckout.href = `https://wa.me/966123456789?text=${encodedMessage}`;
-        
-        // Ensure WhatsApp link opens in new tab
+        whatsappCheckout.href = `https://wa.me/966123456789?text=${encodeURIComponent(message)}`;
         whatsappCheckout.target = '_blank';
     }
-
-    // Function to show "added to cart" message
-    function showAddedToCartMessage(productName) {
-        const message = document.createElement('div');
-        message.className = 'cart-notification';
-        message.textContent = `تمت إضافة ${productName} إلى السلة`;
+    
+    function showCartNotification(productName) {
+        const notification = document.createElement('div');
+        notification.className = 'cart-notification';
+        notification.innerHTML = `
+            <i class="fas fa-check-circle"></i>
+            <span>تمت إضافة ${productName} إلى السلة</span>
+        `;
         
-        document.body.appendChild(message);
+        document.body.appendChild(notification);
         
         setTimeout(() => {
-            message.classList.add('fade-out');
+            notification.classList.add('show');
+        }, 10);
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
             setTimeout(() => {
-                message.remove();
-            }, 500);
-        }, 2000);
-    }
-
-    // Add event listeners
-    if (cartIcon) {
-        cartIcon.addEventListener('click', function(e) {
-            e.preventDefault();
-            openCartModal();
-        });
+                notification.remove();
+            }, 300);
+        }, 3000);
     }
     
-    if (closeCart) {
-        closeCart.addEventListener('click', closeCartModal);
-    }
-    
-    if (overlay) {
-        overlay.addEventListener('click', closeCartModal);
-    }
-
-    // Add to cart functionality
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
-            e.preventDefault();
-            const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
-            
-            const id = button.getAttribute('data-id');
-            const name = button.getAttribute('data-name');
-            const price = parseFloat(button.getAttribute('data-price'));
-            const image = button.getAttribute('data-image');
-            
-            // Check if item already in cart
-            const existingItem = cart.find(item => item.id === id);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.push({
-                    id,
-                    name,
-                    price,
-                    image,
-                    quantity: 1
-                });
-            }
-            
-            saveCart();
-            updateCartCount();
-            showAddedToCartMessage(name);
-        }
-    });
-
-    // Initialize cart display
+    // Initialize
     updateCartCount();
-    updateWhatsAppLink();
 });
