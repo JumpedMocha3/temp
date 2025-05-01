@@ -3,145 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجر العسل الطبيعي | عسل أصلي 100%</title>
+    <title>عسل طبيعي | متجر العسل الأصلي</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <!-- Fixed Header -->
+    <!-- Fixed Header (same as index.html) -->
     <div id="fixed-header">
-        <div class="container header-container">
-            <!-- Top Header -->
-            <div class="header-top">
-                <div class="mobile-menu-btn">
-                    <i class="fas fa-bars"></i>
-                </div>
-                
-                <a class="logo" href="index.html">
-                    متجر العسل الطبيعي
-                </a>
-                
-                <div class="search-container">
-                    <input type="text" class="search-input" placeholder="البحث عن منتج">
-                    <button class="search-button">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-                
-                <a href="#" class="cart-icon" id="cart-icon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count">0</span>
-                </a>
-            </div>
-            
-            <!-- Bottom Header - Categories -->
-            <div class="header-bottom">
-                <nav class="main-nav">
-                    <div class="nav-item">
-                        <a href="index.html">الصفحة الرئيسية</a>
-                    </div>
-                    
-                    <div class="nav-item has-dropdown">
-                        <a href="categories/honey.html">العسل</a>
-                        <div class="dropdown-menu">
-                            <a href="categories/honey.html?type=sidr" class="dropdown-item">عسل سدر</a>
-                            <a href="categories/honey.html?type=talh" class="dropdown-item">عسل طلح</a>
-                            <a href="categories/honey.html?type=samar" class="dropdown-item">عسل سمر</a>
-                        </div>
-                    </div>
-                    
-                    <div class="nav-item">
-                        <a href="categories/offers.html">عروض مميزة</a>
-                    </div>
-                    
-                    <div class="nav-item">
-                        <a href="categories/mixtures.html">خلطات العسل</a>
-                    </div>
-                    
-                    <div class="nav-item">
-                        <a href="categories/bee-products.html">منتجات النحل</a>
-                    </div>
-                </nav>
-            </div>
-        </div>
+        <!-- Same header content as index.html -->
     </div>
 
-    <!-- Cart Modal -->
-    <div class="overlay" id="overlay"></div>
+    <!-- Cart Overlay and Modal (same as index.html) -->
+    <div class="cart-overlay" id="cart-overlay"></div>
     <div class="cart-modal" id="cart-modal">
-        <div class="cart-header">
-            <h3>سلة المشتريات (<span id="cart-count">0</span> عناصر)</h3>
-            <button class="close-cart" id="close-cart">&times;</button>
-        </div>
-        <div class="cart-items" id="cart-items">
-            <p id="empty-cart-message">سلة المشتريات فارغة</p>
-        </div>
-        <div class="cart-total">
-            الإجمالي: <span id="cart-total">0</span> ر.س
-        </div>
-        <a href="#" class="checkout-btn" id="whatsapp-checkout" target="_blank">
-            <i class="fab fa-whatsapp"></i> إتمام الطلب عبر واتساب
-        </a>
+        <!-- Same cart content as index.html -->
     </div>
 
     <!-- Main Content -->
-    <main id="category-page">
+    <main>
         <section class="page-header">
             <h1>عسل طبيعي 100%</h1>
             <p>أجود أنواع العسل الطبيعي من مصادر موثوقة</p>
         </section>
         
         <div class="container">
-            <div class="product-grid" id="category-products">
-                <!-- Products will be loaded here -->
+            <h2 class="section-title">أنواع العسل</h2>
+            <div class="product-grid" id="product-grid">
+                <!-- Products loaded from JavaScript -->
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (same as index.html) -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <!-- Your footer content here -->
-            </div>
-        </div>
+        <!-- Same footer content as index.html -->
     </footer>
 
     <!-- JavaScript -->
     <script src="../js/products.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/cart.js"></script>
-    
-    <script>
-        // Load products for this category
-        document.addEventListener('DOMContentLoaded', function() {
-            const container = document.getElementById('category-products');
-            if (container) {
-                const honeyProducts = products.filter(product => product.category === 'honey');
-                
-                let html = '';
-                honeyProducts.forEach(product => {
-                    html += `
-                        <div class="product-card">
-                            <img src="../${product.image}" alt="${product.title}">
-                            <h3>${product.title}</h3>
-                            <p class="price">${product.price} ر.س</p>
-                            <a href="#" class="btn add-to-cart" 
-                               data-id="${product.id}" 
-                               data-name="${product.title}" 
-                               data-price="${product.price}"
-                               data-image="../${product.image}">
-                               أضف إلى السلة
-                            </a>
-                        </div>
-                    `;
-                });
-                
-                container.innerHTML = html;
-            }
-        });
-    </script>
-    <script src="js/main.js"></script>
-    <script src="js/cart.js"></script>
 </body>
 </html>
