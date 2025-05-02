@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جميع المنتجات - متجر العسل الطبيعي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header (same as index.html) -->
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">عسل طبيعي</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">الرئيسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="products.html">جميع المنتجات</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="honeyDropdown">
+                                العسل
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="honey-types.html">جميع أنواع العسل</a></li>
+                                <li><a class="dropdown-item" href="beeswax.html">شمع عسل</a></li>
+                                <li><a class="dropdown-item" href="honey-products.html">منتجات بالعسل</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="bee-products.html">منتجات النحل</a>
+                        </li>
+                    </ul>
+                    <div class="search-container me-3">
+                        <input type="text" class="form-control" placeholder="ابحث عن منتجات العسل..." id="search-input">
+                        <button id="search-button"><i class="fas fa-search"></i></button>
+                    </div>
+                    <a href="cart.html" class="btn btn-primary position-relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Products Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h1 class="h2">جميع المنتجات</h1>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6 mb-2">
+                            <select class="form-select" id="category-filter">
+                                <option value="all">جميع الفئات</option>
+                                <option value="العسل">العسل</option>
+                                <option value="انواع-العسل">أنواع العسل</option>
+                                <option value="شمع-عسل">شمع عسل</option>
+                                <option value="منتجات-بالعسل">منتجات بالعسل</option>
+                                <option value="خلطات-العسل">خلطات العسل</option>
+                                <option value="منتجات-النحل">منتجات النحل</option>
+                                <option value="السمن-والزيوت">السمن والزيوت</option>
+                                <option value="قهوة-بن-مسفر">قهوة بن مسفر</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-select" id="sort-by">
+                                <option value="default">ترتيب حسب</option>
+                                <option value="price-low">السعر: من الأقل للأعلى</option>
+                                <option value="price-high">السعر: من الأعلى للأقل</option>
+                                <option value="newest">الأحدث</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row" id="products-grid">
+                <!-- Products will be loaded by JavaScript -->
+            </div>
+            
+            <nav aria-label="Page navigation" class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">السابق</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">التالي</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>عسل طبيعي</h5>
+                    <p>متجر متخصص في بيع أجود أنواع العسل الطبيعي ومنتجات النحل بجودة عالية وموثوقة.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>روابط سريعة</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">الرئيسية</a></li>
+                        <li><a href="products.html" class="text-white">المنتجات</a></li>
+                        <li><a href="about.html" class="text-white">عن المتجر</a></li>
+                        <li><a href="contact.html" class="text-white">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>تصفح حسب التصنيف</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="honey-types.html" class="text-white">أنواع العسل</a></li>
+                        <li><a href="bee-products.html" class="text-white">منتجات النحل</a></li>
+                        <li><a href="honey-mixes.html" class="text-white">خلطات العسل</a></li>
+                        <li><a href="ghee-oils.html" class="text-white">السمن والزيوت</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>معلومات الاتصال</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> الرياض، المملكة العربية السعودية</li>
+                        <li><i class="fas fa-phone me-2"></i> +966 50 123 4567</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@naturalhoney.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 عسل طبيعي. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Checkout Modal (same as index.html) -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">إتمام الطلب</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="customerForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">الاسم الكامل</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">رقم الهاتف</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">العنوان</label>
+                            <textarea class="form-control" id="address" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">إتمام الطلب عبر واتساب</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
