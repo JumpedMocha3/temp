@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "productId": "عسل-سدر-1",
+        "title": "عسل سدر أصلي 1 كيلو",
+        "price": 300,
+        "category": "العسل",
+        "subcategory": "انواع-العسل",
+        "image": "images/sidr-honey.jpg",
+        "description": "عسل سدر يمني أصلي 100% معبأ بعناية."
+    },
+    {
+        "id": 2,
+        "title": "عسل طلح بلدي 500 جرام",
+        "productId": "عسل-طلح-1",
+        "price": 150,
+        "category": "العسل",
+        "subcategory": "انواع-العسل",
+        "image": "images/talah-honey.jpg",
+        "description": "عسل طلح طبيعي من أشجار الطلح."
+    },
+    {
+        "id": 3,
+        "title": "شمع عسل خام",
+        "productId": "شمع-عسل-1",
+        "price": 100,
+        "category": "منتجات-النحل",
+        "subcategory": "شمع-عسل",
+        "image": "images/bee-wax.jpg",
+        "description": "شمع عسل طبيعي خام بجودة عالية."
+    },
+    {
+        "id": 4,
+        "title": "كريم عسل للبشرة",
+        "productId": "كريم-عسل-1",
+        "price": 120,
+        "category": "منتجات-النحل",
+        "subcategory": "منتجات-بالعسل",
+        "image": "images/honey-cream.jpg",
+        "description": "كريم مغذي للبشرة بالعسل الطبيعي."
+    },
+    {
+        "id": 5,
+        "title": "خلطة عسل بالحبة السوداء",
+        "productId": "خلطة-عسل-1",
+        "price": 250,
+        "category": "خلطات-العسل",
+        "subcategory": "منتجات-بالعسل",
+        "image": "images/honey-mix.jpg",
+        "description": "خلطة عسل مع حبة سوداء لتعزيز المناعة."
+    },
+    {
+        "id": 6,
+        "title": "قهوة بن مسفر 250 جرام",
+        "productId": "قهوة-بن-1",
+        "price": 180,
+        "category": "قهوة-بن-مسفر",
+        "subcategory": "منتجات-اخرى",
+        "image": "images/coffee.jpg",
+        "description": "قهوة بن مسفر عالية الجودة."
+    },
+    {
+        "id": 7,
+        "title": "عسل سمر جبلي 1 كيلو",
+        "productId": "عسل-سمر-1",
+        "price": 350,
+        "category": "العسل",
+        "subcategory": "انواع-العسل",
+        "image": "images/samar-honey.jpg",
+        "description": "عسل سمر جبلي طبيعي 100%."
+    },
+    {
+        "id": 8,
+        "title": "عسل زهور برية 500 جرام",
+        "productId": "عسل-زهور-1",
+        "price": 200,
+        "category": "العسل",
+        "subcategory": "انواع-العسل",
+        "image": "images/wildflower-honey.jpg",
+        "description": "عسل زهور برية متنوعة."
+    },
+    {
+        "id": 9,
+        "title": "حبوب لقاح النحل",
+        "productId": "حبوب-لقاح-1",
+        "price": 150,
+        "category": "منتجات-النحل",
+        "subcategory": "منتجات-النحل",
+        "image": "images/bee-pollen.jpg",
+        "description": "حبوب لقاح نحل طبيعية غنية بالفوائد."
+    },
+    {
+        "id": 10,
+        "title": "عسل بالجنسنج",
+        "productId": "عسل-جنسنج-1",
+        "price": 400,
+        "category": "خلطات-العسل",
+        "subcategory": "خلطات-العسل",
+        "image": "images/honey-ginseng.jpg",
+        "description": "خلطة عسل مع جنسنج لتعزيز الطاقة."
+    },
+    {
+        "id": 11,
+        "title": "سمن بلدي 1 كيلو",
+        "productId": "سمن-بلدي-1",
+        "price": 120,
+        "category": "السمن-والزيوت",
+        "subcategory": "السمن-والزيوت",
+        "image": "images/ghee.jpg",
+        "description": "سمن بلدي طبيعي 100%."
+    },
+    {
+        "id": 12,
+        "title": "زيت زيتون بكر ممتاز",
+        "productId": "زيت-زيتون-1",
+        "price": 90,
+        "category": "السمن-والزيوت",
+        "subcategory": "السمن-والزيوت",
+        "image": "images/olive-oil.jpg",
+        "description": "زيت زيتون بكر ممتاز."
+    }
+]
