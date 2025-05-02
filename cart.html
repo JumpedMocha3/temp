@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سلة التسوق - متجر العسل الطبيعي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header (same as index.html) -->
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">عسل طبيعي</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">الرئيسية</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="products.html">جميع المنتجات</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="honeyDropdown">
+                                العسل
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="honey-types.html">جميع أنواع العسل</a></li>
+                                <li><a class="dropdown-item" href="beeswax.html">شمع عسل</a></li>
+                                <li><a class="dropdown-item" href="honey-products.html">منتجات بالعسل</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="bee-products.html">منتجات النحل</a>
+                        </li>
+                    </ul>
+                    <div class="search-container me-3">
+                        <input type="text" class="form-control" placeholder="ابحث عن منتجات العسل..." id="search-input">
+                        <button id="search-button"><i class="fas fa-search"></i></button>
+                    </div>
+                    <a href="cart.html" class="btn btn-primary position-relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Cart Section -->
+    <section class="py-5">
+        <div class="container">
+            <h1 class="h2 mb-4">سلة التسوق</h1>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>المنتج</th>
+                                            <th>السعر</th>
+                                            <th>الكمية</th>
+                                            <th>المجموع</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="cart-items">
+                                        <!-- Cart items will be loaded by JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">إضافة كود خصم</h5>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="أدخل كود الخصم">
+                                <button class="btn btn-primary" type="button">تطبيق</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title mb-3">ملخص الطلب</h5>
+                            
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>المجموع الجزئي</span>
+                                <span id="subtotal">0 ر.س</span>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-2">
+                                <span>تكلفة الشحن</span>
+                                <span>0 ر.س</span>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mb-3">
+                                <span>الخصم</span>
+                                <span>0 ر.س</span>
+                            </div>
+                            
+                            <hr>
+                            
+                            <div class="d-flex justify-content-between mb-3 fw-bold">
+                                <span>الإجمالي</span>
+                                <span id="total">0 ر.س</span>
+                            </div>
+                            
+                            <button class="btn btn-primary w-100" id="checkout-btn" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+                                إتمام الطلب
+                            </button>
+                            
+                            <a href="products.html" class="btn btn-outline-secondary w-100 mt-2">
+                                متابعة التسوق
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (same as index.html) -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>عسل طبيعي</h5>
+                    <p>متجر متخصص في بيع أجود أنواع العسل الطبيعي ومنتجات النحل بجودة عالية وموثوقة.</p>
+                    <div class="social-icons">
+                        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>روابط سريعة</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">الرئيسية</a></li>
+                        <li><a href="products.html" class="text-white">المنتجات</a></li>
+                        <li><a href="about.html" class="text-white">عن المتجر</a></li>
+                        <li><a href="contact.html" class="text-white">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>تصفح حسب التصنيف</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="honey-types.html" class="text-white">أنواع العسل</a></li>
+                        <li><a href="bee-products.html" class="text-white">منتجات النحل</a></li>
+                        <li><a href="honey-mixes.html" class="text-white">خلطات العسل</a></li>
+                        <li><a href="ghee-oils.html" class="text-white">السمن والزيوت</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>معلومات الاتصال</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt me-2"></i> الرياض، المملكة العربية السعودية</li>
+                        <li><i class="fas fa-phone me-2"></i> +966 50 123 4567</li>
+                        <li><i class="fas fa-envelope me-2"></i> info@naturalhoney.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2023 عسل طبيعي. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Checkout Modal (same as index.html) -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">إتمام الطلب</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="customerForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">الاسم الكامل</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">رقم الهاتف</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">العنوان</label>
+                            <textarea class="form-control" id="address" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">إتمام الطلب عبر واتساب</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
